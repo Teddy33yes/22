@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детские рисунки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Детские рисунки</h1>
+    <div>
+        {% for drawing in drawings %}
+            <div>
+                <img src="{{ drawing.image }}" alt="{{ drawing.title }}">
+                <p>{{ drawing.title }} by {{ drawing.child_name }}</p>
+                <a href="{{ url_for('vote', drawing_id=drawing.id) }}">Голосовать</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
